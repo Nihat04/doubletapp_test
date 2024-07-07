@@ -1,0 +1,78 @@
+@font-face {
+    font-family: 'Geometria';
+    src:
+        local('Geometria'),
+        local('Geometria'),
+        url('./assets/fonts/Geometria.woff2') format('woff2'),
+        url('./assets/fonts/Geometria.ttf') format('ttf');
+    font-weight: 400;
+    line-height:29px;
+}
+
+@font-face {
+    font-family: 'Geometria Medium';
+    src:
+        local('Geomtria Medium'),
+        local('GeometriaMedium'),
+        url('./assets/fonts/Geometria-Medium.woff2') format('woff2'),
+        url('./assets/fonts/Geometria-Medium.ttf') format('ttf');
+    font-weight: 500;
+    line-height:29px;
+}
+
+@font-face {
+    font-family: 'Geometria Bold';
+    src:
+        local('Geomtria Bold'),
+        local('GeometriaBold'),
+        url('./assets/fonts/Geometria-Bold.woff2') format('woff2'),
+        url('./assets/fonts/Geometria-Bold.ttf') format('ttf');
+    font-weight: 700;
+    line-height:29px;
+}
+
+@font-face {
+    font-family: 'Geometria ExtraBold';
+    src:
+        local('Geometria ExtraBold'),
+        local('GeometriaBold'),
+        url('./assets/fonts/Geometria-ExtraBold.woff2') format('woff2'),
+        url('./assets/fonts/Geometria-ExtraBold.ttf') format('ttf');
+    font-weight: 800;
+    line-height:29px; 
+}
+
+:root {
+    --black-color: #000;
+    --white-color: #fff;
+    --blue-color: #49c2e8;
+    --blue-10perc-color: rgba(0, 0, 0, 10);
+    --green-color: #83c872;
+    --yellow-color: #f7fb53;
+    --red-color: #e25b5b;
+    --orange-color: #efa638;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Geometria', Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+}
