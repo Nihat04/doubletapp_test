@@ -6,7 +6,6 @@
         url('./assets/fonts/Geometria.woff2') format('woff2'),
         url('./assets/fonts/Geometria.ttf') format('ttf');
     font-weight: 400;
-    line-height:29px;
 }
 
 @font-face {
@@ -17,7 +16,6 @@
         url('./assets/fonts/Geometria-Medium.woff2') format('woff2'),
         url('./assets/fonts/Geometria-Medium.ttf') format('ttf');
     font-weight: 500;
-    line-height:29px;
 }
 
 @font-face {
@@ -28,7 +26,6 @@
         url('./assets/fonts/Geometria-Bold.woff2') format('woff2'),
         url('./assets/fonts/Geometria-Bold.ttf') format('ttf');
     font-weight: 700;
-    line-height:29px;
 }
 
 @font-face {
@@ -39,7 +36,6 @@
         url('./assets/fonts/Geometria-ExtraBold.woff2') format('woff2'),
         url('./assets/fonts/Geometria-ExtraBold.ttf') format('ttf');
     font-weight: 800;
-    line-height:29px; 
 }
 
 :root {
