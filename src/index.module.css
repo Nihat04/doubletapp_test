@@ -46,7 +46,7 @@
     --black-color: #000;
     --white-color: #fff;
     --blue-color: #49c2e8;
-    --blue-10perc-color: rgba(0, 0, 0, 10);
+    --blue-10perc-color: rgba(0, 0, 0, 0.1);
     --green-color: #83c872;
     --yellow-color: #f7fb53;
     --red-color: #e25b5b;
@@ -73,6 +73,18 @@ h3,
 h4,
 h5,
 h6 {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+p {
     margin: 0;
     padding: 0;
 }

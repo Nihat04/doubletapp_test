@@ -13,7 +13,6 @@ export async function getStudents() {
     const resposne = await axiosInstance.get('persons');
     const data = await resposne.data;
     const students = await data.students;
-
     return students;
 }
 

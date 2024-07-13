@@ -3,15 +3,23 @@ import globalStyles from '../../App.module.css';
 import styles from './Students.module.css';
 import classNames from 'classnames';
 import { getStudents } from '../../api/students';
+import StudentsTable from '../StudentsTable/StudentsTable';
 
 const Students = () => {
-    const [students, setStudents] = useState({});
+    const [students, setStudents] = useState([]);
+    const [searchText, setSearchText] = useState('');
 
     useEffect(() => {
+        if (searchText) return;
         getStudents().then((res) => setStudents(res));
-
-        console.log(students);
     }, []);
+
+    const searchStudent = (searching: string) => {
+        setSearchText(searching);
+        setStudents(
+            students.filter((student) => student.name.includes(searching))
+        );
+    };
 
     return (
         <section className={styles['students']}>
@@ -25,6 +33,7 @@ const Students = () => {
                         )}
                         type="search"
                         placeholder="Поиск по имени"
+                        onChange={(e) => searchStudent(e.target.value)}
                     />
                     <select
                         className={classNames(
@@ -84,7 +93,7 @@ const Students = () => {
                         </option>
                     </select>
                 </div>
-                <div className="students__table"></div>
+                <StudentsTable arr={students} />
             </div>
         </section>
     );

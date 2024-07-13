@@ -16,6 +16,7 @@
 
 .students__filters {
     display: flex;
+    margin-bottom: 32px;
     gap: var(--filters-gap);
 }
 
