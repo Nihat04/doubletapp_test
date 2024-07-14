@@ -61,6 +61,7 @@ html {
 
 body {
     font-family: 'Geometria', Arial, Helvetica, sans-serif;
+    color: var(--black-color);
 }
 
 h1,
@@ -78,6 +79,7 @@ button {
     padding: 0;
     border: none;
     background: none;
+    cursor: pointer;
 }
 
 p {

@@ -9,13 +9,13 @@
 }
 
 .table__header {
-    margin-bottom: 12px;
-    padding: 0px var(--padding-sides) ;
+    margin-bottom: 16px;
+    padding: 0px var(--padding-sides) 0 17px ;
 }
 
 .table__body {
     display: flex;
-    padding: 26px var(--padding-sides);
+    padding: 28px 17px 28px var(--padding-sides);
     flex-direction: column;
     border-radius: 6px;
     box-shadow: 0 7px 64px 0 rgba(0, 0, 0, 0.07);
