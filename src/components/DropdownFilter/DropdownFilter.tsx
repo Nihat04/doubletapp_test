@@ -3,9 +3,37 @@ import globalStyles from '../../App.module.css';
 import classNames from 'classnames';
 import { useState } from 'react';
 
-const DropdownFilter = () => {
+const DropdownFilter = (props: {
+    filterArray: Array<object>;
+    setFilterArray: (arr: Array<any>) => void;
+    options: { name: string; displayName: string; reverse: boolean }[];
+}) => {
+    const { filterArray, setFilterArray, options } = props;
+
     const [isOpen, setIsOpen] = useState(false);
-    const [curerentFilter, setCurrentFilter] = useState('Имя Я-А');
+    const [currentFilter, setCurrentFilter] = useState(options[0].displayName);
+
+    const filter = (options: {
+        name: string;
+        displayName: string;
+        reverse: boolean;
+    }) => {
+        setFilterArray(
+            filterArray.sort((el1, el2) => {
+                const firstElName = el1[options.name];
+                const secondElName = el2[options.name];
+                let comparison = 0;
+
+                if (firstElName > secondElName) comparison = 1;
+                else if (firstElName < secondElName) comparison = -1;
+
+                return options.reverse ? -comparison : comparison;
+            })
+        );
+        console.log(filterArray);
+        setIsOpen(false);
+        setCurrentFilter(options.displayName);
+    };
 
     return (
         <div className={styles['dropdown-filter']}>
@@ -16,54 +44,23 @@ const DropdownFilter = () => {
                 )}
                 onClick={() => setIsOpen(!isOpen)}
             >
-                Фильтр
+                {currentFilter}
             </button>
             <div
                 className={classNames(styles['dropdown-filter__menu'], {
                     [styles['dropdown-filter__menu--open']]: isOpen,
                 })}
             >
-                <button
-                    className={styles['dropdown-filter__option']}
-                    name="alphabetic"
-                    onClick={(e) => setCurrentFilter(e.target.name)}
-                >
-                    Имя А-Я
-                </button>
-                <button
-                    className={styles['dropdown-filter__option']}
-                    name="alphabetic-reverse"
-                    onClick={(e) => setCurrentFilter(e.target.name)}
-                >
-                    Имя Я-А
-                </button>
-                <button
-                    className={styles['dropdown-filter__option']}
-                    name="age"
-                    onClick={(e) => setCurrentFilter(e.target.name)}
-                >
-                    Сначала моложе
-                </button>
-                <button
-                    className={styles['dropdown-filter__option']}
-                    name="age-reverse"
-                    onClick={(e) => setCurrentFilter(e.target.name)}
-                >
-                    Сначала старше
-                </button>
-                <button
-                    className={styles['dropdown-filter__option']}
-                    name="rating"
-                    onClick={(e) => setCurrentFilter(e.target.name)}
-                >
-                    Высокий рейтинг
-                </button>
-                <button
-                    className={styles['dropdown-filter__option']}
-                    value="rating-reverse"
-                >
-                    Низкий рейтинг
-                </button>
+                {options.map((option, index) => (
+                    <button
+                        className={styles['dropdown-filter__option']}
+                        name={option.name}
+                        key={index}
+                        onClick={() => filter(option)}
+                    >
+                        {option.displayName}
+                    </button>
+                ))}
             </div>
         </div>
     );
