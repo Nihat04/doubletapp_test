@@ -1,21 +1,17 @@
 @import url(../../index.module.css);
-
-:root {
-    --padding-sides: 20px;
-}
-
 .table {
     width: 100%;
 }
 
 .table__header {
-    margin-bottom: 12px;
-    padding: 0px var(--padding-sides) ;
+    margin-bottom: 16px;
+    padding: 0px 20px ;
 }
 
 .table__body {
     display: flex;
-    padding: 26px var(--padding-sides);
+    padding: 26px 17px 26px 19px;
+    font-family: 'Geometria Medium';
     flex-direction: column;
     border-radius: 6px;
     box-shadow: 0 7px 64px 0 rgba(0, 0, 0, 0.07);
@@ -32,8 +28,8 @@
     border-radius: 100%;
     box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.6) inset;
 }
-
 .student-color {
+    display: inline-block;
     --size: 30px;
     width: var(--size);
     height: var(--size);
@@ -60,8 +56,108 @@
     box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.1);
 }
 
+@media screen and (max-width: 1200px) {
+    .table {
+        padding: 20px;
+    }
+}
+
 @media screen and (max-width: 768px) {
+
+    .table {
+        padding: 0;
+    }
+
     .table__header {
         display: none !important;
+    }
+
+    .table__body {
+        padding: 0 20px;
+        align-items: center;
+        box-shadow: none;
+        gap: 10px;
+    }
+
+    .student-color {
+        --size: 12px
+    }
+
+    .item {
+        width: 100%;
+        min-height: 170px;
+        border-radius: 6px;
+        box-shadow: 0 7px 64px 0 rgba(0, 0, 0, 0.07);
+    }
+    
+    .item__header {
+        display: flex;
+        padding: 16px 18px 13px 16px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .student-avatar {
+        margin-right: 21px;
+    }
+
+    .item__header__info__name {
+        margin-bottom: 5px;
+        font-family: 'Geometria Medium';
+        font-size: 15px;
+    }
+
+    .item__header__info__bottom {
+        display: flex;
+        align-items: center;
+    }
+
+    .student-color {
+        margin-right: 13px;
+    }
+
+    .item__header__info__rating {
+        padding: 0 20px;
+        font-family: 'Geometria Medium';
+        font-size: 12px;
+        vertical-align:text-bottom;
+        background-image: url('../../assets/svg/star-icon.svg');
+        background-repeat: no-repeat;
+        background-size: 10px;
+        background-position: left center;
+    }
+
+    .student--delete-btn {
+        margin-left: auto;
+    }
+
+    .item__body {
+        padding: 17px 79px;
+        justify-content: center;
+    }
+
+    .item__body__list {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        flex-direction: column;
+        list-style: none;
+        gap: 11px;
+    }
+
+    .item__body__list__item {
+        position: relative;
+        margin-left: 18px;
+        font-size: 12px;
+    }
+
+    .item__body__list__item::before {
+        content: '•';
+        height: 100%;
+        color: var(--blue-color);
+        scale: 1.9;
+        position: absolute;
+        top: 1px;
+        left: -18px;
+        overflow: visible;
     }
 }

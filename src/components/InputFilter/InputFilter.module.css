@@ -1,0 +1,9 @@
+.input-filters__input {
+    padding: 15px 0 14.48px 55px;
+    width:  100%;
+    min-height: 48px;
+    background-image: url(../../assets/svg/search-icon.svg);
+    background-size: 19px;
+    background-position: 20px 15px;
+    background-repeat: no-repeat;
+}

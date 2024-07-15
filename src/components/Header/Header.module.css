@@ -1,9 +1,5 @@
 @import url('../../index.module.css');
 
-:root {
-    --gap: 45px
-}
-
 .header {
     display: flex;
     margin-bottom: 74.71px;
@@ -15,17 +11,17 @@
     box-shadow: 0 7px 64px 0 rgba(0, 0, 0, 0.07);
 }
 
-.header__logo--container {
+.header__logo--wrapper {
     position: relative;
     --size: 42px;
-    margin-right: var(--gap);
+    margin-right: 45px;
     width: var(--size);
     height: var(--size);
 }
 
 .header__logo {
     position: absolute;
-    width: 47px;
+    width: 48px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -36,14 +32,20 @@
     color: var(--black-color);
     font-family: "Geometria Medium";
     font-size: 20px;
+    line-height: 10px;
 }
 
-.color--blue {
+.header__header-text--git {
     color: var(--blue-color);
 }
 
 @media screen and (max-width: 1200px) {
     .header {
+        margin-bottom: 39px;
         padding-left: 29px;
+    }
+
+    .header__logo--wrapper {
+        margin-right: 26px;
     }
 }

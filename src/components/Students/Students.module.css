@@ -1,9 +1,5 @@
 @import url(../../index.module.css);
 
-:root {
-    --filters-gap: 20px
-}
-
 .students__header {
     margin-bottom: 47px;
     width: 302px;
@@ -14,34 +10,19 @@
     line-height:29px;
 }
 
-.students__filters {
-    display: flex;
-    margin-bottom: 32px;
-    justify-content: space-between;
-    gap: var(--filters-gap);
+.students__filters--wrapper {
+    margin-bottom: 35px;
 }
 
-.students__filters__input {
-    padding: 17px 0 15px 55px;
-    width:  100%;
-    min-height: 48px;
-    background-image: url(../../assets/svg/search-icon.svg);
-    background-size: 19px;
-    background-position: 20px center;
-    background-repeat: no-repeat; 
-}
+@media screen and (max-width: 1200px) {
+    .students__header {
+        margin-bottom: 22px;
+        padding-left: 20px;
+        font-size: 30px;
+    }
 
-.students__filters__dropdown {
-    -moz-appearance:none; /* Firefox */
-    -webkit-appearance:none; /* Safari and Chrome */
-    appearance:none;
-    min-width: 180px;
-    font-family: "Geometria Medium";
-    color: var(--black-color);
-    font-size: 12px;
-    font-weight: 500;
-    background-image: url('../../assets/svg/filter-icon.svg');
-    background-size: 20px;
-    background-position: calc(100% - 17px) center;
-    background-repeat: no-repeat;
+    .students__filters--wrapper {
+        margin-bottom: 10px;
+        padding: 0 20px;
+    }
 }

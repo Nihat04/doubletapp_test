@@ -1,30 +1,15 @@
-# React + TypeScript + Vite
+# Тестовое задание от DoubleTapp
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Здравствуйте меня зовут **Алиев Нихат**, я являюсь студентом 2 курса в Урфу на специальности "Программная инженерия". Для реализации проекта я использовал Vite React. В ходе работы я взял за основу pixel perfect вёрстку. Также я столкнулся с проблемами в реализации pixel perfect из-за шрифта, у версии скачанной мной из интернета отличается толщина у шрифтов. Ещё хотелось бы отметить мою неопытность в работе с grid-layout, так уж получилось что я знал про его существование, но до этого мне не доводилось работать с ним и это мой первый опыт работы с grid-layout.
 
-Currently, two official plugins are available:
+## Как развернуть проект
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+После клонирования репозитория выполнить в корневой папке репозитория следующие команды **cmd**
 
-## Expanding the ESLint configuration
+- ```npm i```
+- ```npm run dev```
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+После чего по порту ссылке **http://localhost:5173/** будет размещён работающий проект
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Примечание
+Этот проект нужно ещё рефакторить. К сожалению периода в 2 недели мне не хватило по ряду причин, таких как учебная практика от университета, а также болезнь, которая ностигла меня в этот период. 

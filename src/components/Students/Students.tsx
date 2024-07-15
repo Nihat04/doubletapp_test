@@ -1,99 +1,85 @@
 import { useEffect, useState } from 'react';
-import globalStyles from '../../App.module.css';
-import styles from './Students.module.css';
-import classNames from 'classnames';
 import { getStudents } from '../../api/students';
+import styles from './Students.module.css';
+import globalStyles from '../../App.module.css';
 import StudentsTable from '../StudentsTable/StudentsTable';
+import Filters from '../FilterGroup1/FilterGroup1';
 
 const Students = () => {
     const [students, setStudents] = useState([]);
-    const [searchText, setSearchText] = useState('');
+    const [search, setSearch] = useState('');
+
+    const calculateAge = (birthday: string) => {
+        const birthdayDate = new Date(birthday);
+        const timeDiff = Math.abs(Date.now() - birthdayDate.getTime());
+        const age = Math.floor(timeDiff / (1000 * 3600 * 24) / 365.25);
+        return age;
+    };
 
     useEffect(() => {
-        if (searchText) return;
-        getStudents().then((res) => setStudents(res));
-    }, []);
+        getStudents().then((res) => {
+            setStudents(
+                res
+                    .map((el) => ({ ...el, age: calculateAge(el.birthday) }))
+                    .filter((el) =>
+                        el.name.toLowerCase().includes(search.toLowerCase())
+                    )
+            );
+        });
+    }, [search]);
 
-    const searchStudent = (searching: string) => {
-        setSearchText(searching);
-        setStudents(
-            students.filter((student) => student.name.includes(searching))
-        );
-    };
+    const studentsDropdownFilters = [
+        {
+            id: 1,
+            name: 'name',
+            displayName: 'Имя А-Я',
+            reverse: false,
+        },
+        {
+            id: 2,
+            name: 'name',
+            displayName: 'Имя Я-А',
+            reverse: true,
+        },
+        {
+            id: 3,
+            name: 'age',
+            displayName: 'Сначала моложе',
+            reverse: false,
+        },
+        {
+            id: 4,
+            name: 'age',
+            displayName: 'Сначала старше',
+            reverse: true,
+        },
+        {
+            id: 5,
+            name: 'rating',
+            displayName: 'Высокий рейтинг',
+            reverse: true,
+        },
+        {
+            id: 6,
+            name: 'rating',
+            displayName: 'Низкий рейтинг',
+            reverse: false,
+        },
+    ];
 
     return (
         <section className={styles['students']}>
             <div className={globalStyles['container']}>
                 <h2 className={styles['students__header']}>Студенты</h2>
-                <div className={styles['students__filters']}>
-                    <input
-                        className={classNames(
-                            styles['students__filters__input'],
-                            globalStyles['input']
-                        )}
-                        type="search"
-                        placeholder="Поиск по имени"
-                        onChange={(e) => searchStudent(e.target.value)}
+                <div className={styles['students__filters--wrapper']}>
+                    <Filters
+                        filterArray={students}
+                        setFilterArray={setStudents}
+                        searchFunc={setSearch}
+                        dropdownOptions={studentsDropdownFilters}
                     />
-                    <select
-                        className={classNames(
-                            styles['students__filters__dropdown'],
-                            globalStyles['input']
-                        )}
-                        name="students-filter"
-                        id="filter"
-                    >
-                        <option
-                            className={
-                                styles['students__filters__dropdown__option']
-                            }
-                            value="alphabetic"
-                        >
-                            Имя А-Я
-                        </option>
-                        <option
-                            className={
-                                styles['students__filters__dropdown__option']
-                            }
-                            value="alphabetic-reverse"
-                        >
-                            Имя Я-А
-                        </option>
-                        <option
-                            className={
-                                styles['students__filters__dropdown__option']
-                            }
-                            value="age"
-                        >
-                            Сначала моложе
-                        </option>
-                        <option
-                            className={
-                                styles['students__filters__dropdown__option']
-                            }
-                            value="age-reverse"
-                        >
-                            Сначала старше
-                        </option>
-                        <option
-                            className={
-                                styles['students__filters__dropdown__option']
-                            }
-                            value="rating"
-                        >
-                            Высокий рейтинг
-                        </option>
-                        <option
-                            className={
-                                styles['students__filters__dropdown__option']
-                            }
-                            value="rating-reverse"
-                        >
-                            Низкий рейтинг
-                        </option>
-                    </select>
                 </div>
-                <StudentsTable arr={students} />
+                <StudentsTable arr={students} setArr={setStudents} />
             </div>
         </section>
     );
