@@ -10,12 +10,19 @@
     line-height:29px;
 }
 
+.students__filters--wrapper {
+    margin-bottom: 35px;
+}
+
 @media screen and (max-width: 1200px) {
     .students__header {
+        margin-bottom: 22px;
         padding-left: 20px;
+        font-size: 30px;
     }
 
     .students__filters--wrapper {
+        margin-bottom: 10px;
         padding: 0 20px;
     }
 }

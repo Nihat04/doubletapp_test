@@ -6,33 +6,37 @@ import { useState } from 'react';
 const DropdownFilter = (props: {
     filterArray: Array<object>;
     setFilterArray: (arr: Array<any>) => void;
-    options: { name: string; displayName: string; reverse: boolean }[];
+    options: {
+        id: number;
+        name: string;
+        displayName: string;
+        reverse: boolean;
+    }[];
 }) => {
     const { filterArray, setFilterArray, options } = props;
 
     const [isOpen, setIsOpen] = useState(false);
-    const [currentFilter, setCurrentFilter] = useState(options[0].displayName);
+    const [currentFilter, setCurrentFilter] = useState({displayName: 'Сортировать'});
 
-    const filter = (options: {
+    const filter = (option: {
         name: string;
         displayName: string;
         reverse: boolean;
     }) => {
-        setFilterArray(
-            filterArray.sort((el1, el2) => {
-                const firstElName = el1[options.name];
-                const secondElName = el2[options.name];
+        setFilterArray([
+            ...filterArray.sort((el1, el2) => {
+                const firstElName = el1[option.name];
+                const secondElName = el2[option.name];
                 let comparison = 0;
 
                 if (firstElName > secondElName) comparison = 1;
                 else if (firstElName < secondElName) comparison = -1;
 
-                return options.reverse ? -comparison : comparison;
-            })
-        );
-        console.log(filterArray);
+                return option.reverse ? -comparison : comparison;
+            }),
+        ]);
         setIsOpen(false);
-        setCurrentFilter(options.displayName);
+        setCurrentFilter(option);
     };
 
     return (
@@ -44,7 +48,7 @@ const DropdownFilter = (props: {
                 )}
                 onClick={() => setIsOpen(!isOpen)}
             >
-                {currentFilter}
+                {currentFilter.displayName}
             </button>
             <div
                 className={classNames(styles['dropdown-filter__menu'], {
@@ -53,7 +57,13 @@ const DropdownFilter = (props: {
             >
                 {options.map((option, index) => (
                     <button
-                        className={styles['dropdown-filter__option']}
+                        className={classNames(
+                            styles['dropdown-filter__option'],
+                            {
+                                [styles['dropdown-filter__option--active']]:
+                                    currentFilter.id === option.id,
+                            }
+                        )}
                         name={option.name}
                         key={index}
                         onClick={() => filter(option)}

@@ -6,7 +6,6 @@
     font-family: "Geometria Medium";
     color: var(--black-color);
     font-size: 12px;
-    font-weight: 500;
     background: var(--white-color);
     background-image: url('../../assets/svg/filter-icon.svg');
     background-size: 20px;
@@ -24,8 +23,10 @@
     position: absolute;
     display: none;
     padding: 8px 5px;
+    min-width: 180px;
     flex-direction: column;
     background-color: var(--white-color);
+    z-index: 3;
     gap: 3px;
 }
 
@@ -35,18 +36,32 @@
 
 .dropdown-filter__option {
     padding: 12px 0 7px 17px;
+    font-family: "Geometria Medium";
     text-align: left;
+    vertical-align: text-top;
     font-size: 12px;
     border-radius: 5px;
 }
 
-.dropdown-filter__option:active {
-    background: rgba(73, 194, 232, 0.11);
+.dropdown-filter__option:hover {
+    background-color: rgba(73, 194, 232, 0.11);
+    ;
+}
+
+.dropdown-filter__option--active {
+    background-image: url('../../assets/svg/check.svg');
+    background-repeat: no-repeat;
+    background-position: calc(100% - 20px) center;
 }
 
 @media screen and (max-width: 650px) {
     .dropdown-filter {
         min-width: 54px;
         font-size: 0;
+    }
+    
+    .dropdown-filter__menu {
+        left: 54px;
+        transform: translateX(-100%);
     }
 }

@@ -1,6 +1,6 @@
 .grid {
     display: grid;
-    grid-template-columns: 0.35fr 2.61fr 2.43fr 0.7fr 0.7fr 0.7fr 0.26fr 0.26fr;
+    grid-template-columns: 40px minmax(auto, 300px) minmax(auto, 280px) minmax(auto, 120px) minmax(auto, 120px) minmax(auto, 80px) 30px 30px;
     align-items:center;
     grid-gap: 20px;
 }
@@ -13,7 +13,7 @@
 .col-2 {
     grid-column: 2;
 }
-
+ 
 .col-3 {
     grid-column: 3;
 }

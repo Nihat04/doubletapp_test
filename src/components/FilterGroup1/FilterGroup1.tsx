@@ -4,20 +4,20 @@ import InputFilter from '../InputFilter/InputFilter';
 
 const FilterGroup1 = (props: {
     filterArray: Array<object>;
-    setFilterArray: (arr) => void;
-    inputPropertyName: string;
-    dropdownOptions: { name: string; displayName: string; reverse: boolean }[];
+    setFilterArray: (arr: Array<any>) => void;
+    searchFunc: (searchText: string) => void;
+    dropdownOptions: {
+        id: number;
+        name: string;
+        displayName: string;
+        reverse: boolean;
+    }[];
 }) => {
-    const { filterArray, setFilterArray, inputPropertyName, dropdownOptions } =
-        props;
+    const { filterArray, setFilterArray, searchFunc, dropdownOptions } = props;
 
     return (
         <div className={styles['filters']}>
-            <InputFilter
-                filterArray={filterArray}
-                setFilterArray={setFilterArray}
-                propertyName={inputPropertyName}
-            />
+            <InputFilter searchFunc={searchFunc} />
             <DropdownFilter
                 filterArray={filterArray}
                 setFilterArray={setFilterArray}

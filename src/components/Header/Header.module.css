@@ -30,21 +30,22 @@
 .header__header-text {
     display: inline;
     color: var(--black-color);
-    /* font-family: "Geometria Medium"; */
+    font-family: "Geometria Medium";
     font-size: 20px;
     line-height: 10px;
 }
 
-.color--blue {
+.header__header-text--git {
     color: var(--blue-color);
 }
 
 @media screen and (max-width: 1200px) {
     .header {
+        margin-bottom: 39px;
         padding-left: 29px;
     }
 
-    .header__logo--container {
+    .header__logo--wrapper {
         margin-right: 26px;
     }
 }

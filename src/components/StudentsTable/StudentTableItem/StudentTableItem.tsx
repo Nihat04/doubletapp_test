@@ -4,14 +4,7 @@ import gridStyles from '../grid.module.css';
 import classNames from 'classnames';
 
 const StudentTableItem = (props) => {
-    const { student } = props;
-
-    const calculateAge = (birthday) => {
-        const birthdayDate = new Date(birthday);
-        const timeDiff = Math.abs(Date.now() - birthdayDate.getTime());
-        const age = Math.floor(timeDiff / (1000 * 3600 * 24) / 365.25);
-        return age;
-    };
+    const { student, deleteFunc } = props;
 
     const avatarStyle = {
         backgroundImage: `url(${student.avatar})`,
@@ -19,19 +12,26 @@ const StudentTableItem = (props) => {
 
     return (
         <div className={gridStyles['grid']}>
-            <div className={styles['student-avatar']} style={avatarStyle}></div>
-            <p>{student.name}</p>
-            <p>{student.specialty}</p>
-            <p>{student.group}</p>
-            <p>{calculateAge(student.birthday)}</p>
-            <p>{student.rating}</p>
+            <div className={styles['student-avatar']} style={avatarStyle} />
+            <p className={styles['table__body__item__text']}>{student.name}</p>
+            <p className={styles['table__body__item__text']}>
+                {student.specialty}
+            </p>
+            <p className={styles['table__body__item__text']}>{student.group}</p>
+            <p className={styles['table__body__item__text']}>{student.age}</p>
+            <p className={styles['table__body__item__text']}>
+                {student.rating}
+            </p>
             <div
                 className={classNames(
                     styles['student-color'],
                     styles[student.color]
                 )}
             ></div>
-            <button className={styles['student--delete-btn']}>
+            <button
+                className={styles['student--delete-btn']}
+                onClick={() => deleteFunc(student.id)}
+            >
                 <img src={deleteIcon} alt="" />
             </button>
         </div>

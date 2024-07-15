@@ -4,7 +4,7 @@ import logo from '../../assets/svg/logo.svg';
 const MOBILE__HEADER__TEXT = <span>STUDENTS</span>;
 const HEADER__TEXT = (
     <span>
-        STUDENTS by <span className={styles['color--blue']}>Nihat04</span>
+        STUDENTS by <span className={styles['header__header-text--git']}>Nihat04</span>
     </span>
 );
 
