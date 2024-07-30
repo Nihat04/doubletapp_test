@@ -1,17 +1,14 @@
 import styles from './FilterGroup1.module.css';
-import DropdownFilter from '../DropdownFilter/DropdownFilter';
+import DropdownFilter, {
+    dropdownFilterObject,
+} from '../DropdownFilter/DropdownFilter';
 import InputFilter from '../InputFilter/InputFilter';
 
 const FilterGroup1 = (props: {
     filterArray: Array<object>;
-    setFilterArray: (arr: Array<any>) => void;
+    setFilterArray: (arr: dropdownFilterObject[]) => void;
     searchFunc: (searchText: string) => void;
-    dropdownOptions: {
-        id: number;
-        name: string;
-        displayName: string;
-        reverse: boolean;
-    }[];
+    dropdownOptions: dropdownFilterObject[];
 }) => {
     const { filterArray, setFilterArray, searchFunc, dropdownOptions } = props;
 

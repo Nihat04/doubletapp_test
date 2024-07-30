@@ -3,9 +3,16 @@ import globalStyles from '../../App.module.css';
 import classNames from 'classnames';
 import { useState } from 'react';
 
+export type dropdownFilterObject = {
+    id: number;
+    name: string;
+    displayName: string;
+    reverse: boolean;
+};
+
 const DropdownFilter = (props: {
     filterArray: Array<object>;
-    setFilterArray: (arr: Array<any>) => void;
+    setFilterArray: (arr: dropdownFilterObject[]) => void;
     options: {
         id: number;
         name: string;
@@ -16,7 +23,9 @@ const DropdownFilter = (props: {
     const { filterArray, setFilterArray, options } = props;
 
     const [isOpen, setIsOpen] = useState(false);
-    const [currentFilter, setCurrentFilter] = useState({displayName: 'Сортировать'});
+    const [currentFilter, setCurrentFilter] = useState({
+        displayName: 'Сортировать',
+    });
 
     const filter = (option: {
         name: string;

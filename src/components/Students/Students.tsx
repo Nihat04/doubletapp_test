@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getStudents } from '../../api/students';
+import { dropdownFilterObject } from '../DropdownFilter/DropdownFilter';
 import styles from './Students.module.css';
 import globalStyles from '../../App.module.css';
 import StudentsTable from '../StudentsTable/StudentsTable';
@@ -9,18 +10,10 @@ const Students = () => {
     const [students, setStudents] = useState([]);
     const [search, setSearch] = useState('');
 
-    const calculateAge = (birthday: string) => {
-        const birthdayDate = new Date(birthday);
-        const timeDiff = Math.abs(Date.now() - birthdayDate.getTime());
-        const age = Math.floor(timeDiff / (1000 * 3600 * 24) / 365.25);
-        return age;
-    };
-
     useEffect(() => {
         getStudents().then((res) => {
             setStudents(
                 res
-                    .map((el) => ({ ...el, age: calculateAge(el.birthday) }))
                     .filter((el) =>
                         el.name.toLowerCase().includes(search.toLowerCase())
                     )
@@ -28,7 +21,7 @@ const Students = () => {
         });
     }, [search]);
 
-    const studentsDropdownFilters = [
+    const studentsDropdownFilters: dropdownFilterObject[] = [
         {
             id: 1,
             name: 'name',

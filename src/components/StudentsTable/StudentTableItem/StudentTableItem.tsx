@@ -2,8 +2,12 @@ import styles from '../StudentsTable.module.css';
 import deleteIcon from '../../../assets/svg/delete-icon.svg';
 import gridStyles from '../grid.module.css';
 import classNames from 'classnames';
+import { student } from '../../../api/students';
 
-const StudentTableItem = (props) => {
+const StudentTableItem = (props: {
+    student: student;
+    deleteFunc: (id: number) => void;
+}) => {
     const { student, deleteFunc } = props;
 
     const avatarStyle = {
